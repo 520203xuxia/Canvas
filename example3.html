@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas id="my" width="500px" height="500px"></canvas>
+<script type="text/javascript">
+	var posX = 50,
+    posY = 50,width=0;
+var context=document.getElementById('my').getContext('2d');
+ var set=setInterval(function() {
+	context.fillStyle = "black";
+    context.fillRect(0,0,500, 500);
+	width += 5;
+	context.beginPath();
+	context.strokeStyle="#00a";
+	context.lineWidth=5;
+	context.strokeRect(posX,posY,400,150);
+	context.fillStyle = "#00a";
+	context.fillRect(posX, posY, width, 150); 
+	var progress=width/4;	
+	if(width>=400)
+	{
+		clearInterval(set);
+	}
+	context.font='bold 40px 微软雅黑';
+	context.fillStyle="#fff";
+	context.fillText(progress+"%",180,280);
+}, 200);
+
+</script>
+</body>
+</html>
