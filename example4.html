@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas id="my" width="500px" height="500px"></canvas>
+<script type="text/javascript">
+	var posX = 50,
+    posY = 50,width=0;
+var ctx=document.getElementById('my').getContext('2d');
+var angle=0;
+ var set=setInterval(function() {
+ 	ctx.fillStyle="black";
+ 	ctx.fillRect(0,0,500,500);	
+
+ 	ctx.beginPath();
+ 	ctx.lineWidth=1;
+ 	ctx.strokeStyle="#00a";
+	ctx.arc(250,250,150,0,360);
+	ctx.stroke();
+	ctx.beginPath();
+	angle+=0.3;
+	var progress=(angle/(Math.PI*2));
+	if(angle>=Math.PI*2)
+		clearInterval(set);
+	ctx.arc(250,250,150,0,-angle,true);
+	ctx.strokeStyle="#00a";
+	ctx.lineWidth=5;
+	ctx.stroke();
+	ctx.fillStyle="white";
+	ctx.font='bold 40px Arial';
+	ctx.fillText((progress*100).toFixed(0)+"%",200,250);
+}, 200);
+
+
+</script>
+</body>
+</html>
