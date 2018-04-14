@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<canvas id="myCanvas" width="500px" height="500px">不支持</canvas>
+<script type="text/javascript">
+	var canvas=document.getElementById('myCanvas');
+	if(canvas.getContext)
+		var ctx=canvas.getContext('2d');
+	var gradient=ctx.createLinearGradient(10,10,490,490);
+	gradient.addColorStop(0,'#c00');
+	gradient.addColorStop(1,'#0F0');
+	//ctx.fillStyle=gradient;
+	//ctx.fillRect(10,10,400,400);
+	for(var i=0;i<40;i++)
+	{
+		for(var j=0;j<20;j++)
+		{
+			ctx.beginPath();
+			ctx.fillStyle='rgb('+i*10+','+j*10+','+(i+j)*10+')';
+			if(j*80+i*20+20-480>=0 && i*20 <=460)
+				ctx.fillRect(j*80+i*20+20-480,i*20,40,20);
+		}
+	}
+	for(var i=0;i<40;i++)
+	{
+		for(var j=0;j<20;j++)
+		{			
+			ctx.beginPath();
+			ctx.fillStyle='rgb('+i*10+','+j*10+','+(i+j)*10+')';
+			if(j*80-480+i*20>=0&& i*20<=500)
+			 ctx.fillRect(j*80-480+i*20,i*20,20,40);
+		}
+	}
+	
+</script>
+</body>
+</html>
