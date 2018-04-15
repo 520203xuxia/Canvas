@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas id="mycanvas" width="500" height="500">不支持</canvas>
+<script type="text/javascript">
+	var ctx=document.getElementById('mycanvas').getContext('2d');
+	ctx.translate(0,500);
+	ctx.rotate(Math.PI*1.5);
+	ctx.beginPath();
+	ctx.fillStyle="#000";
+	ctx.fillRect(0,0,500,500);	
+	ctx.beginPath();
+	var basketball=new Image();
+	basketball.src="img/basketball.png";
+	function drawball(x,y)
+	{
+		ctx.drawImage(basketball,x,y,50,50);
+	}
+	basketball.onload=function()
+	{
+		drawball(450,100);
+	}	
+	var height=450;
+	var t=0;
+	var v0=0;
+	var flag=true;
+	function down(){
+		ctx.clearRect(0,0,500,500);
+		ctx.fillStyle="#000";
+		ctx.fillRect(0,0,500,500);			
+		t+=0.01;
+		height-=(9.5*Math.pow(t,2))/2;
+		drawball(height-(9.5*Math.pow(t,2))/2,100);
+		if(height-(9.5*Math.pow(t,2))/2<=0)
+		{					
+			clearInterval(setdown);	
+			bounce();
+		}
+		v0=9.5*t;//末速度
+	}
+	function bounce()
+	{
+		t=0;
+		var v=90;
+		height=0;
+		function up()
+		{			
+			t+=0.01;
+			ctx.clearRect(0,0,500,500);
+			ctx.fillStyle="#000";
+			ctx.fillRect(0,0,500,500);
+			height= v*t-(10*Math.pow(t,2))/2;
+			drawball(height,100);
+			if(v-10*t<=0||height>300)
+			{
+				clearInterval(setbounce);	
+			}
+		}
+		var setbounce=setInterval(up,10);
+
+	}	
+	var setdown=setInterval(down,10);
+	
+		
+
+</script>
+
+</body>
+
+</html>
